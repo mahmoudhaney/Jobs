@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Job
 from django.core.paginator import Paginator
 from .filters import JobFilter
-from .forms import JobForm
+from .forms import JobForm, CandidateForm
 from django.urls import reverse
 
 '''
@@ -40,8 +40,18 @@ def dashboard(request):
 
 def job_details(request, id):
     job_details = Job.objects.get(id=id)
-    
-    context = {'job': job_details}
+
+    if request.method == 'POST':
+        form = CandidateForm(request.POST, request.FILES)
+        if form.is_valid():
+            my_form = form.save(commit=False)
+            my_form.job = job_details
+            my_form.save()
+            return redirect('jobs:job_details', id=id)
+    else:
+        form = CandidateForm()
+
+    context = {'job': job_details, 'form': form}
     return render(request, 'job_details.html', context)
 
 def add_job(request):
