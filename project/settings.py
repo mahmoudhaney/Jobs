@@ -128,6 +128,9 @@ STATICFILES_DIRS = [ BASE_DIR / "static" ]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# For Loging using Username or Email
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mahmoudhaney25@gmail.com'
