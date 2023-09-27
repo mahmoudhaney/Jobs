@@ -6,11 +6,6 @@ from .forms import JobForm, CandidateForm
 from django.urls import reverse
 from django.contrib.auth.decorators import permission_required
 
-'''
-jobs and dashboard views almost the same and this is not professional
-we can fix this problem by merging the views together with some conditions
-if the current user is admin then render the dashboard else render the jobs
-'''
 def jobs(request):
     job_list = Job.objects.all()
     jobs_count = job_list.count()
@@ -23,21 +18,11 @@ def jobs(request):
     page_obj = paginator.get_page(page_number)
     
     context = {'jobs_count': jobs_count, 'jobs': page_obj, 'filters': filter}
-    return render(request, 'jobs.html', context)
 
-def dashboard(request):
-    job_list = Job.objects.all()
-    jobs_count = job_list.count()
-
-    filter = JobFilter(request.GET, queryset=job_list)
-    job_list = filter.qs
-
-    paginator = Paginator(job_list, 3)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    
-    context = {'jobs_count': jobs_count, 'jobs': page_obj, 'filters': filter}
-    return render(request, 'jobs_dashboard.html', context)
+    if request.user.is_staff:
+        return render(request, 'jobs_dashboard.html', context)
+    else:
+        return render(request, 'jobs.html', context)
 
 def job_details(request, id):
     job_details = Job.objects.get(id=id)
