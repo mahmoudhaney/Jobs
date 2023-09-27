@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from .filters import JobFilter
 from .forms import JobForm, CandidateForm
 from django.urls import reverse
+from django.contrib.auth.decorators import permission_required
 
 '''
 jobs and dashboard views almost the same and this is not professional
@@ -54,6 +55,7 @@ def job_details(request, id):
     context = {'job': job_details, 'form': form}
     return render(request, 'job_details.html', context)
 
+@permission_required('admin')
 def add_job(request):
     if request.method == 'POST':
         form = JobForm(request.POST, request.FILES)
@@ -66,6 +68,7 @@ def add_job(request):
         form = JobForm()
     return render(request, 'add_job.html', {'form': form})
 
+@permission_required('admin')
 def edit_job(request, id):
     job_details = Job.objects.get(id=id)
     
@@ -80,6 +83,7 @@ def edit_job(request, id):
     context = {'form': form, 'job_id': job_details.id}
     return render(request, 'edit_job.html', context)
 
+@permission_required('admin')
 def delete_job(request, id):
     job = Job.objects.get(id=id)
     job.delete()

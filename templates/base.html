@@ -73,9 +73,12 @@
                                             <a href="{% url 'login' %}">Log in</a>
                                         </div>
                                     {% endif %}
-                                    <div class="d-none d-lg-block">
-                                        <a class="boxed-btn3" href="{% url 'jobs:add_jobs' %}">Post a Job</a>
-                                    </div>
+
+                                    {% if user.is_staff %}
+                                        <div class="d-none d-lg-block">
+                                            <a class="boxed-btn3" href="{% url 'jobs:add_jobs' %}">Post a Job</a>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-12">
