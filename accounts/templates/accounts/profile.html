@@ -19,8 +19,21 @@
     <div class="job_details_area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="job_sumary">
+                <div class="col-lg-12 d-flex justify-content-between">
+                    <div class="col-lg-3 job_sumary">
+                        <div class="summery_header">
+                            <h3>Settings</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li><a  href="{% url 'accounts:profile_edit' %}">Edit Profile</a></li>
+                                <li><a  href="{% url 'accounts:profile_edit' %}">Change Password</a></li>
+                                <li><a  href="{% url 'password_reset' %}">Reset Password</a></li>
+                                <li><a  href="{% url 'logout' %}">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 job_sumary">
                         <div class="summery_header">
                             <h3>Profile Summary</h3>
                         </div>
@@ -33,7 +46,7 @@
                                 <li>Address: <span>{{profile.address}}</span></li>
                             </ul>
                         </div>
-                        <div class="p-5">
+                        <div class="p-3">
                             <a class="boxed-btn3 w-100" href="{% url 'accounts:profile_edit' %}"> Edit Profile</a>
                         </div>
                     </div>
