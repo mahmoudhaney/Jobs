@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from .filters import JobFilter
 from .forms import JobForm, CandidateForm
 from django.urls import reverse
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, login_required
 
 def jobs(request):
     job_list = Job.objects.all()
@@ -26,18 +26,7 @@ def jobs(request):
 
 def job_details(request, id):
     job_details = Job.objects.get(id=id)
-
-    if request.method == 'POST':
-        form = CandidateForm(request.POST, request.FILES)
-        if form.is_valid():
-            my_form = form.save(commit=False)
-            my_form.job = job_details
-            my_form.save()
-            return redirect('jobs:job_details', id=id)
-    else:
-        form = CandidateForm()
-
-    context = {'job': job_details, 'form': form}
+    context = {'job': job_details}
     return render(request, 'job_details.html', context)
 
 @permission_required('admin')
@@ -73,3 +62,20 @@ def delete_job(request, id):
     job = Job.objects.get(id=id)
     job.delete()
     return redirect(reverse('jobs:job_dashboard'))
+
+@login_required
+def job_apply(request, id):
+    job_details = Job.objects.get(id=id)
+    
+    if request.method == 'POST':
+        form = CandidateForm(request.POST, request.FILES)
+        if form.is_valid():
+            my_form = form.save(commit=False)
+            my_form.job = job_details
+            my_form.save()
+            return redirect('jobs:job_details', id=id)
+    else:
+        form = CandidateForm()
+
+    context = {'job': job_details, 'form': form}
+    return render(request, 'job_apply.html', context)

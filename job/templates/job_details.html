@@ -40,8 +40,8 @@
                                 </div>
                             </div>
                             <div class="jobs_right">
-                                <div class="apply_now">
-                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                <div>
+                                    <a class="boxed-btn3" href="{% url 'jobs:job_apply' job.id %}">Apply</a>
                                 </div>
                             </div>
                         </div>
@@ -51,14 +51,9 @@
                             <h4>Job description</h4>
                             <p>{{job.description}}</p>
                         </div>
-                    </div>
-                    <div class="apply_job_form white-bg">
-                        <h4>Apply for the job</h4>
-                        <form method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {% bootstrap_form form %}
-                            <button class="boxed-btn3 w-100 mt-3" type="submit">Apply Now</button>
-                        </form>
+                        <div>
+                            <a class="boxed-btn3 w-100" href="{% url 'jobs:job_apply' job.id %}">Apply Now</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
