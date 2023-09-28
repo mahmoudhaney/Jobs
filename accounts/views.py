@@ -19,6 +19,8 @@ def signup(request):
 
 def profile_edit(request):
     profile = Profile.objects.get(user=request.user)
+    print(profile, profile.image)
+    old_image = profile.image
 
     if request.method=='POST':
         userform = UserForm(request.POST,instance=request.user)
@@ -28,6 +30,8 @@ def profile_edit(request):
             myprofile = profileform.save(commit=False)
             myprofile.user = request.user
             myprofile.save()
+            if old_image != request.FILES['image']:
+                old_image.delete(save=False)
             return redirect('accounts:profile')
     else :
         userform = UserForm(instance=request.user)

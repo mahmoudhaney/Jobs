@@ -5,6 +5,7 @@ from .filters import JobFilter
 from .forms import JobForm, CandidateForm
 from django.urls import reverse
 from django.contrib.auth.decorators import permission_required, login_required
+import os
 
 def jobs(request):
     job_list = Job.objects.all()
@@ -45,12 +46,15 @@ def add_job(request):
 @permission_required('admin')
 def edit_job(request, id):
     job_details = Job.objects.get(id=id)
+    old_image = job_details.image
     
     if request.method == 'POST':
         job_form = JobForm(request.POST, request.FILES, instance=job_details)
         if job_form.is_valid():
             job_form.save()
-            return redirect(reverse('jobs:job_dashboard'))
+            if old_image != request.FILES['image']:
+                old_image.delete(save=False)
+            return redirect(reverse('jobs:jobs'))
     else:
         form = JobForm(instance=job_details)
     
@@ -60,8 +64,10 @@ def edit_job(request, id):
 @permission_required('admin')
 def delete_job(request, id):
     job = Job.objects.get(id=id)
+    if os.path.isfile(job.image.path):
+        os.remove(job.image.path)
     job.delete()
-    return redirect(reverse('jobs:job_dashboard'))
+    return redirect(reverse('jobs:jobs'))
 
 @login_required
 def job_apply(request, id):
