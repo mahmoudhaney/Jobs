@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
 from .models import Profile
 from accounts.forms import SignupForm, UserForm, ProfileForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def profile(request):
     profile = Profile.objects.get(user=request.user)
     return render(request, 'accounts/profile.html', {'profile': profile})
@@ -17,6 +19,7 @@ def signup(request):
         form = SignupForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
+@login_required
 def profile_edit(request):
     profile = Profile.objects.get(user=request.user)
     print(profile, profile.image)
