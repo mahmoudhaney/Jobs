@@ -29,7 +29,7 @@ Once you've found a few jobs you're interested in, you can easily apply online o
 - `python-decouple 3.8`
 - DB `sqlite` - `sqlparse 0.4.4`
 
-### Setup
+## Setup
 
 - Clone the repository using the command below:
 ```bash
@@ -55,7 +55,7 @@ virtualenv env_name
 
 - Activate the virtual environment:
 ```bash
-envname\scripts\activate
+env_name\scripts\activate
 
 ```
 
@@ -75,7 +75,7 @@ python manage.py runserver
 
 #
 
-### App Preview :
+## App Preview :
 
 <table width="100%"> 
   <tr>
