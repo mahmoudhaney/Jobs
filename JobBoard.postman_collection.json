@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "67329043-6686-472f-888b-3bbe736de383",
+		"name": "JobBoard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23723164"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Testing Development\",\r\n    \"description\": \"Testing Testing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mobile Development - MD\",\r\n    \"description\": \"The Process of Making software for smartphones, tablets, and digital assistants, most commonly for the Android and iOS operating systems\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/category/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"category",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "List Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/job/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"job",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Job",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Flutter Developer",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A Flutter Developer often works in close collaboration with data collection and analytics to create useful answers to questions and provide valuable insight",
+									"type": "text"
+								},
+								{
+									"key": "job_type",
+									"value": "Part Time",
+									"type": "text"
+								},
+								{
+									"key": "vacancy",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Egypt, Cairo",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Mahmoud Haney/Downloads/3.svg"
+								},
+								{
+									"key": "category",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "9",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/job/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"job",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Job",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/job/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"job",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Jenior React Developer",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "sjf;djsakf sjfdpoj",
+									"type": "text"
+								},
+								{
+									"key": "job_type",
+									"value": "Full Time",
+									"type": "text"
+								},
+								{
+									"key": "vacancy",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Egypt, Cairo",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "owner",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/job/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"job",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/job/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"job",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidates",
+			"item": [
+				{
+					"name": "List Candidates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/candidate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"candidate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Candidate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marwan Amr",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marwan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "https://mahmoudhaney.me/",
+									"type": "text"
+								},
+								{
+									"key": "cv",
+									"type": "file",
+									"src": "/C:/Users/Mahmoud Haney/Downloads/NationalIDToPayments.pdf"
+								},
+								{
+									"key": "cover_letter",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/candidate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"candidate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Candidate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/candidate/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"candidate",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Candidate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Marwan Amr",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "marwan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "https://mahmoudhaney.me/",
+									"type": "text"
+								},
+								{
+									"key": "cv",
+									"type": "file",
+									"src": "/C:/Users/Mahmoud Haney/Downloads/NationalIDToPayments.pdf"
+								},
+								{
+									"key": "cover_letter",
+									"value": "testing",
+									"type": "text"
+								},
+								{
+									"key": "job",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/candidate/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"candidate",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Candidate",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/candidate/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"candidate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "nada",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/api-token-auth/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"api-token-auth",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN 23ea9b40b6f75cda6cef573e9182d00906a32ae3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/get-details",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"get-details"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "TOKEN <b1dafc587946a19cc1d776110873e12b3ffcb733>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "mohamednasser",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mohamednasser@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Mohamed",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Nasser",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
