@@ -2,11 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["id", "first_name", "last_name", "username"]
+from .models import Profile
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
@@ -33,3 +29,40 @@ class RegisterSerializer(serializers.ModelSerializer):
         last_name=validated_data['last_name']
         )
         return user
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ["address", "phone_number", "image"]
+
+class UserSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(many=False)
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "username", "email", "profile"]
+        extra_kwargs = {
+        'username': {'required': False, 'read_only': True},
+        }
+
+    def update(self, instance, validated_data):
+        """
+        Override serializer 'update' function,
+        Because DRF doesn't support Writable Nested Serializers
+        """
+        # Update User Data
+        instance.first_name = validated_data['first_name']
+        instance.last_name = validated_data['last_name']
+        instance.email = validated_data['email']
+        instance.save()
+
+        # Update User's Profile Data
+        try:
+            user_profile = Profile.objects.get(user=instance.id)
+            if user_profile:
+                user_profile.address= validated_data['profile']['address']
+                user_profile.phone_number= validated_data['profile']['phone_number']
+                user_profile.image= validated_data['profile']['image']
+                user_profile.save()
+            return instance
+        except Profile.DoesNotExists:
+            pass

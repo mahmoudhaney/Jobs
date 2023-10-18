@@ -592,81 +592,6 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "nada",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Django123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/api-token-auth/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"api-token-auth",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve User",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "TOKEN 23ea9b40b6f75cda6cef573e9182d00906a32ae3",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/get-details",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"get-details"
-							],
-							"query": [
-								{
-									"key": "Authorization",
-									"value": "TOKEN <b1dafc587946a19cc1d776110873e12b3ffcb733>",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Signup",
 					"request": {
 						"method": "POST",
@@ -719,6 +644,176 @@
 							"path": [
 								"accounts",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "mohamednasser",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "TOKEN <b1dafc587946a19cc1d776110873e12b3ffcb733>",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Mohamed",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Nasser George",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mohamednasser@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "profile.address",
+									"value": "Egypt, Cairo",
+									"type": "text"
+								},
+								{
+									"key": "profile.phone_number",
+									"value": "01115007966",
+									"type": "text"
+								},
+								{
+									"key": "profile.image",
+									"type": "file",
+									"src": "/C:/Users/Mahmoud Haney/Pictures/Screenshots/Screenshot (533).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile",
+								""
 							]
 						}
 					},
