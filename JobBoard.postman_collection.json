@@ -37,10 +37,16 @@
 					"name": "Add Category",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Testing Development\",\r\n    \"description\": \"Testing Testing\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Desktop Development\",\r\n    \"description\": \"Testing Testing\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +78,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category/2",
+							"raw": "http://127.0.0.1:8000/api/category/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -84,7 +90,7 @@
 							"path": [
 								"api",
 								"category",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -94,10 +100,16 @@
 					"name": "Update Category",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mobile Development - MD\",\r\n    \"description\": \"The Process of Making software for smartphones, tablets, and digital assistants, most commonly for the Android and iOS operating systems\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Desktop Development 2\",\r\n    \"description\": \"Testing Testing\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -105,7 +117,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category/4",
+							"raw": "http://127.0.0.1:8000/api/category/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -117,7 +129,7 @@
 							"path": [
 								"api",
 								"category",
-								"4"
+								"7"
 							]
 						}
 					},
@@ -127,7 +139,13 @@
 					"name": "Delete Category",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -138,7 +156,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category/4",
+							"raw": "http://127.0.0.1:8000/api/category/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -150,7 +168,7 @@
 							"path": [
 								"api",
 								"category",
-								"4"
+								"7"
 							]
 						}
 					},
@@ -189,7 +207,13 @@
 					"name": "Add Job",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -235,12 +259,12 @@
 								},
 								{
 									"key": "category",
-									"value": "3",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "owner",
-									"value": "9",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -270,7 +294,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/job/5",
+							"raw": "http://127.0.0.1:8000/api/job/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -282,7 +306,7 @@
 							"path": [
 								"api",
 								"job",
-								"5"
+								"7"
 							]
 						}
 					},
@@ -292,13 +316,19 @@
 					"name": "Update Job",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Jenior React Developer",
+									"value": "Jenior Flutter Developer",
 									"type": "text"
 								},
 								{
@@ -333,23 +363,23 @@
 								},
 								{
 									"key": "image",
-									"value": "",
-									"type": "text"
+									"type": "file",
+									"src": "/C:/Users/Mahmoud Haney/Downloads/4.svg"
 								},
 								{
 									"key": "category",
-									"value": "2",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "owner",
-									"value": "10",
+									"value": "1",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/job/3",
+							"raw": "http://127.0.0.1:8000/api/job/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -361,7 +391,7 @@
 							"path": [
 								"api",
 								"job",
-								"3"
+								"7"
 							]
 						}
 					},
@@ -371,9 +401,15 @@
 					"name": "Delete Job",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/job/2",
+							"raw": "http://127.0.0.1:8000/api/job/7",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -385,7 +421,7 @@
 							"path": [
 								"api",
 								"job",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -400,7 +436,13 @@
 					"name": "List Candidates",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/candidate/",
 							"protocol": "http",
@@ -424,13 +466,19 @@
 					"name": "Add Candidate",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Marwan Amr",
+									"value": "Marwan Amr 2",
 									"type": "text"
 								},
 								{
@@ -455,7 +503,7 @@
 								},
 								{
 									"key": "job",
-									"value": "3",
+									"value": "4",
 									"type": "text"
 								}
 							]
@@ -483,9 +531,15 @@
 					"name": "Retrieve Candidate",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/candidate/2",
+							"raw": "http://127.0.0.1:8000/api/candidate/5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -497,7 +551,7 @@
 							"path": [
 								"api",
 								"candidate",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -507,7 +561,13 @@
 					"name": "Update Candidate",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN cedbae0245c976ee68d4ad020e4e623039df1d54",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -566,7 +626,13 @@
 					"name": "Delete Candidate",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN cedbae0245c976ee68d4ad020e4e623039df1d54",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/candidate/1",
 							"protocol": "http",
@@ -695,7 +761,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
 								"type": "text"
 							}
 						],
@@ -731,7 +797,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"value": "TOKEN b1dafc587946a19cc1d776110873e12b3ffcb733",
 								"type": "text"
 							}
 						],
@@ -740,33 +806,33 @@
 							"formdata": [
 								{
 									"key": "first_name",
-									"value": "Mohamed",
+									"value": "Mahmoud",
 									"type": "text"
 								},
 								{
 									"key": "last_name",
-									"value": "Nasser George",
+									"value": "Haney",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "mohamednasser@gmail.com",
+									"value": "mahmoudhaney25@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "profile.address",
-									"value": "Egypt, Cairo",
+									"value": "Egypt, Giza, Zat Al Kom",
 									"type": "text"
 								},
 								{
 									"key": "profile.phone_number",
-									"value": "01115007966",
+									"value": "01115007982",
 									"type": "text"
 								},
 								{
 									"key": "profile.image",
 									"type": "file",
-									"src": "/C:/Users/Mahmoud Haney/Pictures/Screenshots/Screenshot (533).png"
+									"src": "/E:/Personal/My Photos/IMG_20200617_025803.jpg"
 								}
 							]
 						},
@@ -796,7 +862,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN cf0600fc33509b701aa5ea115f92106eb13eed73",
+								"value": "TOKEN 15a2ea4c343a9f95d535f4fb85e1027deffe7130",
 								"type": "text"
 							}
 						],
