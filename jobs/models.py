@@ -37,7 +37,7 @@ class Job(models.Model):
     location = models.CharField(max_length=100, default='Egypt')
     image = models.FileField(upload_to=job_image_upload, default='none')
     published_at = models.DateTimeField(auto_now=True)
-    category = models.ForeignKey(Category, related_name='job_category', on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='jobs', on_delete=models.CASCADE)
     owner = models.ForeignKey(User, related_name='job_owner', on_delete=models.CASCADE)
 
     class Meta:
@@ -65,37 +65,41 @@ def post_delete_img(sender, instance, *args, **kwargs):
     except:
         pass
 
-# Candidate
-def candidate_cv_upload(instance, file_name):
-    image_name, extension = file_name.split(".")
-    return f"candidatesCVs/{str(uuid.uuid4())}.{extension}"
+# Application
+def application_cv_upload(instance, file_name):
+    cv_name, extension = file_name.split(".")
+    return f"applicationCVs/{str(uuid.uuid4())}.{extension}"
 
-class Candidate(models.Model):
+class Application(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
     website = models.URLField()
-    cv = models.FileField(upload_to=candidate_cv_upload, default='none')
+    cv = models.FileField(upload_to=application_cv_upload, default='none')
     cover_letter = models.TextField(max_length=500)
     created_at = models.DateTimeField(auto_now=True)
-    job = models.ForeignKey(Job, related_name='apply_job', on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, related_name='applications', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='applicatoin_owner', on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('job', 'owner')
 
     def __str__(self) -> str:
         return self.name
 
-@receiver(pre_save, sender=Candidate)
+@receiver(pre_save, sender=Application)
 def pre_save_cv(sender, instance, *args, **kwargs):
-    """ Delete old candidate CV if new one is uploaded """
+    """ Delete old Application CV if new one is uploaded """
     try:
         if instance.__class__.objects.get(id=instance.id).cv:
-            old_image = instance.__class__.objects.get(id=instance.id).cv
-            if instance.cv != old_image:
-                old_image.delete(save=False)
+            old_cv = instance.__class__.objects.get(id=instance.id).cv
+            if instance.cv != old_cv:
+                old_cv.delete(save=False)
     except ObjectDoesNotExist:
         pass
 
-@receiver(post_delete, sender=Candidate)
+@receiver(post_delete, sender=Application)
 def post_delete_cv(sender, instance, *args, **kwargs):
-    """ Delete candidate's CV when delete him """
+    """ Delete Application's CV when delete it """
     try:
         instance.cv.delete(save=False)
     except:

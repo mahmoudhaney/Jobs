@@ -24,7 +24,7 @@ class RegisterUser(generics.CreateAPIView):
             user.set_password(request.data['password'])
             user.save()
             token = Token.objects.create(user=user)
-            return Response({'token': token.key})
+            return Response({'token': token.key}, status= status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors)
 
@@ -39,19 +39,28 @@ class UserProfileRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
-        user = User.objects.get(id=request.user.id)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        try:
+            user = User.objects.get(id=request.user.id)
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response({'detail': "Not found."}, status= status.HTTP_404_NOT_FOUND)
 
     def update(self, request, *args, **kwargs):
-        user = User.objects.get(id=request.user.id)
-        serializer = UserSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+        try:
+            user = User.objects.get(id=request.user.id)
+            serializer = UserSerializer(user, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist:
+            return Response({'detail': "Not found."}, status= status.HTTP_404_NOT_FOUND)
 
     def delete(self, request, *args, **kwargs):
-        user = User.objects.get(id=request.user.id)
-        user.delete()
-        return Response(status= status.HTTP_204_NO_CONTENT)
+        try:
+            user = User.objects.get(id=request.user.id)
+            user.delete()
+            return Response(status= status.HTTP_204_NO_CONTENT)
+        except User.DoesNotExist:
+            return Response({'detail': "Not found."}, status= status.HTTP_404_NOT_FOUND)

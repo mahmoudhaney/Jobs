@@ -42,6 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ["first_name", "last_name", "username", "email", "profile"]
         extra_kwargs = {
         'username': {'required': False, 'read_only': True},
+        'email': {'required': False,},
         }
 
     def update(self, instance, validated_data):
