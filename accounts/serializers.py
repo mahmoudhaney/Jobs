@@ -88,3 +88,16 @@ class UserSerializer(serializers.ModelSerializer):
             return instance
         except Profile.DoesNotExists:
             pass
+
+class ChangePasswordSerializer(serializers.ModelSerializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+    new_password2 = serializers.CharField(write_only=True, required=True)
+    class Meta:
+        model = User
+        fields = ('old_password', 'new_password', 'new_password2')
+
+    def validate(self, attrs):
+        if attrs['new_password'] != attrs['new_password2']:
+            raise serializers.ValidationError({"password": "Password fields didn't match."})
+        return attrs
