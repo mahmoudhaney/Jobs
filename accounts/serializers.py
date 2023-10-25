@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from .models import Profile
-from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
@@ -49,7 +48,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         'image': {'required': False,},
         }
 
-class UserSerializer(WritableNestedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(many=False)
     class Meta:
         model = User
