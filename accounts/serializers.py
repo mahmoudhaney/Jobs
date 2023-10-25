@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 from .models import Profile
+from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
@@ -34,36 +35,57 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ["address", "phone_number", "image"]
+        extra_kwargs = {
+        'address': {'required': False},
+        'phone_number': {
+            'required': False,
+            'validators': [
+                        UniqueValidator(
+                            queryset=Profile.objects.all(),
+                            message=("This number already exist"),
+                        )
+                    ]
+            },
+        'image': {'required': False,},
+        }
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(WritableNestedModelSerializer):
     profile = ProfileSerializer(many=False)
     class Meta:
         model = User
         fields = ["first_name", "last_name", "username", "email", "profile"]
         extra_kwargs = {
         'username': {'required': False, 'read_only': True},
-        'email': {'required': False,},
+        'email': {
+                    'validators': [
+                        UniqueValidator(
+                            queryset=User.objects.all(),
+                            message=("This email already exist"),
+                        )
+                    ]
+                },
         }
 
     def update(self, instance, validated_data):
         """
         Override serializer 'update' function,
         Because DRF doesn't support Writable Nested Serializers
-        """
+        """        
         # Update User Data
-        instance.first_name = validated_data['first_name']
-        instance.last_name = validated_data['last_name']
-        instance.email = validated_data['email']
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.email = validated_data.get('email', instance.email)
         instance.save()
-
+        
         # Update User's Profile Data
         try:
-            user_profile = Profile.objects.get(user=instance.id)
-            if user_profile:
-                user_profile.address= validated_data['profile']['address']
-                user_profile.phone_number= validated_data['profile']['phone_number']
-                user_profile.image= validated_data['profile']['image']
-                user_profile.save()
+            profile = Profile.objects.get(user=instance.id)
+            profile_data = validated_data.pop('profile')
+
+            profile.address = profile_data.get('address', profile.address)
+            profile.phone_number = profile_data.get('phone_number', profile.phone_number)
+            profile.image = profile_data.get('image', profile.image)
+            profile.save()
             return instance
         except Profile.DoesNotExists:
             pass

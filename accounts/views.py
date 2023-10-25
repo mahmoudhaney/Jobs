@@ -33,6 +33,7 @@ class UserProfileRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     Override 'get', 'put', and 'delete' functions
     to user token auth instead of 'pk' in url
     """
+    model = User
     queryset = User.objects.all()
     serializer_class = UserSerializer
     authentication_classes = (TokenAuthentication,)
@@ -40,21 +41,21 @@ class UserProfileRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
     def get(self, request, *args, **kwargs):
         try:
-            user = User.objects.get(id=request.user.id)
-            serializer = UserSerializer(user)
+            user = self.model.objects.get(id=request.user.id)
+            serializer = self.get_serializer(user)
             return Response(serializer.data)
-        except User.DoesNotExist:
+        except self.model.DoesNotExist:
             return Response({'detail': "Not found."}, status= status.HTTP_404_NOT_FOUND)
 
     def update(self, request, *args, **kwargs):
         try:
-            user = User.objects.get(id=request.user.id)
-            serializer = UserSerializer(user, data=request.data)
+            user = self.model.objects.get(id=request.user.id)
+            serializer = self.get_serializer(user, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
-        except User.DoesNotExist:
+        except self.model.DoesNotExist:
             return Response({'detail': "Not found."}, status= status.HTTP_404_NOT_FOUND)
 
     def delete(self, request, *args, **kwargs):
