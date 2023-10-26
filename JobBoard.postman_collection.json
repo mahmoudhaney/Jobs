@@ -2,10 +2,377 @@
 	"info": {
 		"_postman_id": "67329043-6686-472f-888b-3bbe736de383",
 		"name": "JobBoard",
+		"description": "Whether you're just starting out in your career, looking for a change, or trying to advance to the next level, we have thousands of jobs to choose from in various industries and locations.\n\nOur easy-to-use search tools make finding jobs matching your skills and interests simple. And with our advanced filtering options, you can narrow down your search results to find the perfect job for you.\n\nOnce you've found a few jobs you're interested in, you can easily apply online or contact the employer directly. We also offer a variety of resources to help you prepare for your job search, including resume and cover letter writing tips, interview advice, and more.\n\nEndFragment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23723164"
 	},
 	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "nader",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "nourhan@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Mohamed",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Nasser",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"register",
+								""
+							]
+						},
+						"description": "- Anyone can Signup in the system.\n    \n- All Fields are required."
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "nader",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django1234567",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"login",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN 136dcf70f11cc567d52928ced3dfcfe456407cf4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "Django12345",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "Django1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password2",
+									"value": "Django12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/change_password/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"change_password",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` and `old_password` are required.\n- `new_password` must be valid."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mahmoudhaney@icloud.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/password_reset/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"password_reset",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- `email` which the user used to signup."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "059c9f4273bf2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django1234567",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/password_reset/confirm/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"password_reset",
+								"confirm",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- token which is sent to user email.\n    \n- new password and must be valid."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN 6b7a7645859e8904586306208d9f04898d40cc9b",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "TOKEN <b1dafc587946a19cc1d776110873e12b3ffcb733>",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required."
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN e971e25fbd9403be5ea9fb8928085baed5ee58b3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Karem",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Nader",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "karemnader@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "profile.address",
+									"value": "Egypt, Giza, Zat Al Kom",
+									"type": "text"
+								},
+								{
+									"key": "profile.phone_number",
+									"value": "01115005900",
+									"type": "text"
+								},
+								{
+									"key": "profile.image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required.\n    \n- all fields are not required."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN b2ee623d3d6a5dd60f540a0f146f422bb83fbbcf",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"profile",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required."
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Categories",
 			"item": [
@@ -47,7 +414,8 @@
 										"category",
 										""
 									]
-								}
+								},
+								"description": "Only Admins can add new Category\n\n- `name` -> maximum 50 characters\n    \n- `description` -> maximum 200 characters"
 							},
 							"response": []
 						},
@@ -86,7 +454,8 @@
 										"category",
 										"7"
 									]
-								}
+								},
+								"description": "Only Admins can update Category\n\n- valid admin `token` is required.\n    \n- category `id` is required in the `url`"
 							},
 							"response": []
 						},
@@ -125,7 +494,8 @@
 										"category",
 										"7"
 									]
-								}
+								},
+								"description": "Only Admins can update Category\n\n- valid admin `token` is required.\n    \n- category `id` is required in the `url`"
 							},
 							"response": []
 						}
@@ -151,7 +521,8 @@
 								"category",
 								""
 							]
-						}
+						},
+						"description": "List all Categories"
 					},
 					"response": []
 				},
@@ -175,7 +546,8 @@
 								"category",
 								"7"
 							]
-						}
+						},
+						"description": "Retrieve a specific category\n\n- category `id` is required in the `url`"
 					},
 					"response": []
 				},
@@ -200,11 +572,13 @@
 								"1",
 								"jobs"
 							]
-						}
+						},
+						"description": "List all a specific category Jobs\n\n- category `id` is required in the `url`"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Job Categories"
 		},
 		{
 			"name": "Jobs",
@@ -293,7 +667,8 @@
 										"job",
 										""
 									]
-								}
+								},
+								"description": "Only admins can add a new job\n\n- valid admin `token` is needed.\n    \n- `title` -> maximum 50 characters.\n- `description` -> maximum 2000 characters.\n- `job_type` -> `Full Time` or `Part Time`.\n- `vacancy` -> `1:10`.\n- `salary` -> `100:100000`.\n- `experience` -> `1:50`."
 							},
 							"response": []
 						},
@@ -378,7 +753,8 @@
 										"job",
 										"7"
 									]
-								}
+								},
+								"description": "Only admins can update a job\n\n- valid admin `token` is needed.\n    \n- job `id` is required in the `url`.\n- `title` -> maximum 50 characters.\n- `description` -> maximum 2000 characters.\n- `job_type` -> `Full Time` or `Part Time`.\n- `vacancy` -> `1:10`.\n- `salary` -> `100:100000`.\n- `experience` -> `1:50`."
 							},
 							"response": []
 						},
@@ -408,7 +784,8 @@
 										"job",
 										"7"
 									]
-								}
+								},
+								"description": "Only admins can update a job\n\n- valid admin `token` is needed.\n    \n- job `id` is required in the `url`."
 							},
 							"response": []
 						},
@@ -439,7 +816,8 @@
 										"1",
 										"applications"
 									]
-								}
+								},
+								"description": "Only admins can list all job applications\n\n- valid admin `token` is needed.\n    \n- job `id` is required in the `url`."
 							},
 							"response": []
 						},
@@ -470,7 +848,8 @@
 										"applications",
 										"111"
 									]
-								}
+								},
+								"description": "Only admins can retrieve a job application\n\n- valid admin `token` is needed.\n- application `id` is required in the `url`."
 							},
 							"response": []
 						}
@@ -496,7 +875,8 @@
 								"job",
 								""
 							]
-						}
+						},
+						"description": "List all jobs"
 					},
 					"response": []
 				},
@@ -520,7 +900,8 @@
 								"job",
 								"7"
 							]
-						}
+						},
+						"description": "Retrieve a specific job\n\n- job `id` is required in the `url`."
 					},
 					"response": []
 				}
@@ -590,7 +971,8 @@
 								"application",
 								""
 							]
-						}
+						},
+						"description": "Only registered users can apply for jobs/add application\n\n- A valid user `token` is required."
 					},
 					"response": []
 				},
@@ -620,7 +1002,8 @@
 								"application",
 								""
 							]
-						}
+						},
+						"description": "Only registered users can list their applications if exist.\n\n- A valid user `token` is required."
 					},
 					"response": []
 				},
@@ -650,7 +1033,8 @@
 								"application",
 								"1"
 							]
-						}
+						},
+						"description": "Only registered users can list their applications if exist.\n\n- A valid user `token` is required.\n    \n- job `id` is required in the `url`."
 					},
 					"response": []
 				},
@@ -716,7 +1100,8 @@
 								"application",
 								"0"
 							]
-						}
+						},
+						"description": "Only registered users can update their applications if exist.\n\n- A valid user `token` is required.\n    \n- job `id` is required in the `url`."
 					},
 					"response": []
 				},
@@ -746,369 +1131,13 @@
 								"application",
 								"4"
 							]
-						}
+						},
+						"description": "Only registered users can delete their applications if exist.\n\n- A valid user `token` is required.\n    \n- job `id` is required in the `url`."
 					},
 					"response": []
 				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "Signup",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "nourhan",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Django123",
-									"type": "text"
-								},
-								{
-									"key": "password2",
-									"value": "Django123",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "nourhan@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "first_name",
-									"value": "Mohamed",
-									"type": "text"
-								},
-								{
-									"key": "last_name",
-									"value": "Nasser",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/register/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"register",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "nourhan",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Django1234567",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/login/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"login",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Change Password",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "TOKEN 136dcf70f11cc567d52928ced3dfcfe456407cf4",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "old_password",
-									"value": "Django12345",
-									"type": "text"
-								},
-								{
-									"key": "new_password",
-									"value": "Django1234",
-									"type": "text"
-								},
-								{
-									"key": "new_password2",
-									"value": "Django12345",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/change_password/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"change_password",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reset Password Request",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "mahmoudhaney@icloud.com",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/password_reset/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"password_reset",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reset Password Confirm",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "token",
-									"value": "059c9f4273bf2",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "Django1234567",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/password_reset/confirm/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"password_reset",
-								"confirm",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Retrieve User Profile",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "TOKEN 6b7a7645859e8904586306208d9f04898d40cc9b",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/profile",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"profile"
-							],
-							"query": [
-								{
-									"key": "Authorization",
-									"value": "TOKEN <b1dafc587946a19cc1d776110873e12b3ffcb733>",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User Profile",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "TOKEN e971e25fbd9403be5ea9fb8928085baed5ee58b3",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "first_name",
-									"value": "Karem",
-									"type": "text"
-								},
-								{
-									"key": "last_name",
-									"value": "Nader",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "karemnader@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "profile.address",
-									"value": "Egypt, Giza, Zat Al Kom",
-									"type": "text"
-								},
-								{
-									"key": "profile.phone_number",
-									"value": "01115005900",
-									"type": "text"
-								},
-								{
-									"key": "profile.image",
-									"type": "file",
-									"src": "/C:/Users/Mahmoud Haney/Pictures/Screenshots/Screenshot (530).png"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/profile/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"profile",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete User Profile",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "TOKEN b2ee623d3d6a5dd60f540a0f146f422bb83fbbcf",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/accounts/profile/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"accounts",
-								"profile",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
+			],
+			"description": "Job applications or candidates"
 		}
 	]
 }
