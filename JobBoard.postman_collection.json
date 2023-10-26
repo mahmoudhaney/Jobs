@@ -765,7 +765,7 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "karemnader",
+									"value": "nourhan",
 									"type": "text"
 								},
 								{
@@ -780,7 +780,7 @@
 								},
 								{
 									"key": "email",
-									"value": "karemnader@gmail.com",
+									"value": "nourhan@gmail.com",
 									"type": "text"
 								},
 								{
@@ -824,12 +824,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "karemnader",
+									"value": "nourhan",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Django123",
+									"value": "Django1234567",
 									"type": "text"
 								}
 							]
@@ -854,13 +854,137 @@
 					"response": []
 				},
 				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "TOKEN 136dcf70f11cc567d52928ced3dfcfe456407cf4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "Django12345",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "Django1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password2",
+									"value": "Django12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/change_password/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"change_password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mahmoudhaney@icloud.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/password_reset/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"password_reset",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "059c9f4273bf2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django1234567",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/accounts/password_reset/confirm/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"accounts",
+								"password_reset",
+								"confirm",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Retrieve User Profile",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN b2ee623d3d6a5dd60f540a0f146f422bb83fbbcf",
+								"value": "TOKEN 6b7a7645859e8904586306208d9f04898d40cc9b",
 								"type": "text"
 							}
 						],
@@ -896,7 +1020,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN b2ee623d3d6a5dd60f540a0f146f422bb83fbbcf",
+								"value": "TOKEN e971e25fbd9403be5ea9fb8928085baed5ee58b3",
 								"type": "text"
 							}
 						],
@@ -910,14 +1034,13 @@
 								},
 								{
 									"key": "last_name",
-									"value": "Nader Ahmed",
+									"value": "Nader",
 									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "karemnader@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "profile.address",
@@ -926,7 +1049,7 @@
 								},
 								{
 									"key": "profile.phone_number",
-									"value": "01115007982",
+									"value": "01115005900",
 									"type": "text"
 								},
 								{
@@ -962,7 +1085,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "TOKEN 15a2ea4c343a9f95d535f4fb85e1027deffe7130",
+								"value": "TOKEN b2ee623d3d6a5dd60f540a0f146f422bb83fbbcf",
 								"type": "text"
 							}
 						],
