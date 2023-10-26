@@ -14,20 +14,21 @@ Once you've found a few jobs you're interested in, you can easily apply online o
   - Thousands of jobs to choose from
   - Easy-to-use search tools
   - Advanced filtering options
-  - Easy online applications
+  - Easy online applications and update or withdraw them
   - Operations on your own profile (Edit Profile, Change Password, Reset Password, etc.)
-  - Contact support service at any time
 - Admins
-  -  A Dashboard for all jobs with all search & filter tools
-  - Operations on jobs (Post, Edit, Delete)
+  - Operations on Jobs Categories (Post, Edit, Update, Delete, etc.)
+  - Operations on Jobs (Post, Edit, Update, Delete, etc.)
+  - List all job Applications.
 
 ## Technologies
 - `Django 4.2.5`
-- `django-bootstrap-v5 1.0.11`
 - `django-filter 23.3`
 - `Pillow 10.0.1`
 - `python-decouple 3.8`
+- `django-rest-passwordreset 1.3.0`
 - DB `sqlite` - `sqlparse 0.4.4`
+
 
 ## Setup
 
@@ -37,11 +38,7 @@ git clone https://github.com/mahmoudhaney/Jobs.git
 
 ```
 
-- Move into the directory where we have the project files: 
-```bash
-cd Jobs
-
-```
+- Move into the directory where the applications installed 
 
 - Create a virtual environment:
 ```bash
@@ -75,60 +72,17 @@ python manage.py runserver
 
 #
 
-## App Preview :
+## How To Use
+After running the server you can use [Postman](https://www.postman.com/downloads/) to try the APIs
+1. Open Postman
+2. Import the [APIs File](JobBoard.postman_collection.json) into your workspace
+3. Use APIs to add some Users, Categories, Jobs, and Applications
+#### Example
+If you want to Register, then navigate to the Endpoit Signup, set the required fields, and then click send
+![image](https://github.com/mahmoudhaney/Jobs/assets/83553963/422f2b7d-a481-4b91-8742-8f8b48ea9fdc)
 
-<table width="100%"> 
-  <tr>
-    <td width="50%">      
-    &nbsp; 
-    <br>
-    <p align="center">
-      Admin Dashboard
-    </p>
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/2617a0a2-1a54-44cd-85bf-9aaf10950bc5">
-    </td> 
-    <td width="50%">
-    <br>
-    <p align="center">
-      User Profile
-    </p>
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/c1f4850f-44e4-4dda-8d55-0a5a47c05fce">  
-    </td>
-  </tr>
-
-  <tr>
-    <td width="50%">      
-    &nbsp; 
-    <br>
-    <p align="center">
-      Edit Profile
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/3918676b-d842-42c1-aaf4-54683d8f742a">
-    </td> 
-    <td width="50%">
-    <br>
-    <p align="center">
-      Jobs List
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/1ac21450-7a1f-4d8d-bb68-f893f191baa8">  
-    </td>
-  </tr>
-
-  <tr>
-    <td width="50%">      
-    &nbsp; 
-    <br>
-    <p align="center">
-      Job Details
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/06232374-8a87-4339-93cd-df378ef05f48">
-    </td> 
-    <td width="50%">
-    <br>
-    <p align="center">
-      Job Application
-    <img src="https://github.com/mahmoudhaney/Jobs/assets/83553963/498e5ea4-fe67-483e-a245-f22944ba1473">  
-    </td>
-  </tr>
-</table>
+> ⚠ You can choose whatever you want to run the System APIs
 
 ## Copyrights
-> ⚠ Copyright ©2023 All rights reserved | Most of the frontend template is made by [Colorlib](https://colorlib.com/)
+> ⚠ Copyright ©2023 All rights reserved
 
